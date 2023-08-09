@@ -10,23 +10,53 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/edittext_value" />
+        android:id="@+id/edittext_value"
+        android:inputType="numberDecimal"
+        android:layout_marginTop="32dp"/>
 
-    <Button
-        android:id="@+id/button_calculate"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Converter para dolar"/>
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button_calculate_dolar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:text="Converter para Dolar"
+            android:textAllCaps="true"/>
+
+        <Button
+            android:id="@+id/button_calculate_real"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:text="Converter para Real"
+            android:textAllCaps="true"/>
+
+
+    </LinearLayout>
     
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Valor em dolar"/>
+        android:textAlignment="center"
+        android:text="Valor da converçao"
+        android:layout_gravity="center"
+        android:textColor="@color/black"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/textview_output"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textColor="#F57C00"
+        android:textSize="32dp"
+        android:textStyle="bold"/>
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>

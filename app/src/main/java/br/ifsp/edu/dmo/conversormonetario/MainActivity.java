@@ -12,7 +12,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private final double DOLLAR_VALUE = 4.92;
     private EditText inputEditText;
-    private Button button;
+    private Button toDollarButton;
+    private Button toRealButton;
     private TextView outputTextView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,23 +24,43 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void setClick() {
-        button.setOnClickListener(this);
+
+        toDollarButton.setOnClickListener(this);
+        toRealButton.setOnClickListener(this);
     }
 
     private void findById() {
         inputEditText = findViewById(R.id.edittext_value);
-        button = findViewById(R.id.button_calculate);
+        toDollarButton = findViewById(R.id.button_calculate_dolar);
+        toRealButton = findViewById(R.id.button_calculate_real);
         outputTextView = findViewById(R.id.textview_output);
     }
 
     @Override
     public void onClick(View v) {
-        if (v == button){
-            converter();
+        if (v == toDollarButton){
+            convertRealForDollar();
+        }
+        if (v == toRealButton){
+            convertDollarForReal();
         }
     }
 
-    private void converter() {
+    private void convertRealForDollar() {
+        double value = getInputValue();
+
+        value = value / DOLLAR_VALUE;
+        outputTextView.setText(String.format("U$ %.2f", value));
+    }
+
+    private void convertDollarForReal() {
+        double value = getInputValue();
+
+        value = value * DOLLAR_VALUE;
+        outputTextView.setText(String.format("R$ %.2f", value));
+    }
+
+    private double getInputValue(){
         double value = 0.0;
         String stringValue;
 
@@ -49,9 +70,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } catch (NumberFormatException exception){
             value = 0;
         }
-
-        value = value/DOLLAR_VALUE;
-        outputTextView.setText(String.valueOf(value));
+        return value;
     }
 
 }
